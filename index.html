@@ -23,7 +23,7 @@
             <form id="trackerForm" class="space-y-4">
                 <div>
                     <label class="block text-sm font-semibold mb-1">Transport Distance (km)</label>
-                    <input type="number" id="transportInput" class="w-full border p-2 rounded focus:ring-2 focus:ring-green-400 outline-none" min="0" max="1500" step="any" required placeholder="e.g. 15">
+                    <input type="number" id="distance" class="w-full border p-2 rounded focus:ring-2 focus:ring-green-400 outline-none" min="0" max="1500" step="any" required placeholder="e.g. 15">
                 </div>
                 <div>
                    <label class="block text-sm font-semibold mb-1">Transport Mode</label>
@@ -36,18 +36,18 @@
                 </div>
                 <div>
     <label class="block text-sm font-semibold mb-1">Electricity Usage (kWh)</label>
-    <input type="number" id="energyInput" class="w-full border p-2 rounded focus:ring-2 focus:ring-green-400 outline-none" min="0" max="500" step="any" required placeholder="e.g. 12">
+    <input type="number" id="electricty" class="w-full border p-2 rounded focus:ring-2 focus:ring-green-400 outline-none" min="0" max="500" step="any" required placeholder="e.g. 12">
                 </div>
                 <div>
                     <label class="block text-sm font-semibold mb-1">Diet Preference</label>
-                    <select id="dietInput" class="w-full border p-2 rounded focus:ring-2 focus:ring-green-400 outline-none" required>
+                    <select id="diet" class="w-full border p-2 rounded focus:ring-2 focus:ring-green-400 outline-none" required>
                         <option value="heavyMeat">Heavy Meat Eater</option>
                         <option value="lowMeat">Low Meat Eater</option>
                         <option value="vegetarian">Vegetarian</option>
                         <option value="vegan">Vegan</option>
                         </select>
                 </div>
-                <button type="submit" class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-2 rounded shadow transition">Log Activities</button>
+                <button type="submit" id="log-btn" class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-2 rounded shadow transition">Log Activities</button>
             </form>
             <div id="validationFeedback" class="hidden text-red-600 text-sm font-medium bg-red-50 p-2 rounded border border-red-200"></div>
         </section>
