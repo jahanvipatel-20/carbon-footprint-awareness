@@ -4,7 +4,7 @@
    <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EcoTrack Platform - Hackathon Edition</title>
+    <title>EcoTrack Platform </title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
@@ -26,13 +26,13 @@
                     <input type="number" id="transportInput" class="w-full border p-2 rounded focus:ring-2 focus:ring-green-400 outline-none" min="0" max="1500" step="any" required placeholder="e.g. 15">
                 </div>
                 <div>
-    <label class="block text-sm font-semibold mb-1">Transport Mode</label>
-    <select id="transportMode" class="w-full border p-2 rounded focus:ring-2 focus:ring-green-400 outline-none" required>
-        <option value="petrolCar">Petrol Car</option>
-        <option value="electricCar">Electric Car</option>
-        <option value="bus">Public Bus</option>
-        <option value="train">Train</option>
-    </select>
+                   <label class="block text-sm font-semibold mb-1">Transport Mode</label>
+                      <select id="transportMode" class="w-full border p-2 rounded focus:ring-2 focus:ring-green-400 outline-none" required>
+                          <option value="petrolCar">Petrol Car</option>
+                          <option value="electricCar">Electric Car</option>
+                          <option value="bus">Public Bus</option>
+                          <option value="train">Train</option>
+                      </select>
                 </div>
                 <div>
     <label class="block text-sm font-semibold mb-1">Electricity Usage (kWh)</label>
@@ -76,8 +76,10 @@
             </div>
 
             <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
-                <h2 class="text-xl font-bold mb-4 text-green-700">Automated Integration Sandbox Tests</h2>
-                <div id="jest-lite-report" class="bg-gray-900 text-green-400 p-4 rounded-lg font-mono text-xs overflow-x-auto max-h-48 shadow-inner"></div>
+                <h2 class="text-xl font-bold mb-4 mt-8 text-slate-800">Automated Integration Sandbox Tests</h2>
+                <div id="sandbox-console" class="w-full bg-slate-950 text-slate-200 font-mono text-sm p-4 rounded-lg min-h-[50px] shadow-inner">
+                      Running test suites...
+                </div>
             </div>
         </section>
     </main>
