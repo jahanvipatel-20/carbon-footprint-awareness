@@ -130,13 +130,6 @@ function createThrottledRunner(callbackDelay, targetingFunction) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    
-    const consoleBox = document.getElementById("sandbox-console");
-    if (consoleBox) {
-        consoleBox.innerHTML = `<div class="text-green-400 font-mono text-sm">✔ Integration Sandbox: All core validation and emission calculation matrix tests PASSED successfully.</div>`;
-    }
-
-    
     const logBtn = document.getElementById("log-btn");
     if (logBtn) {
         logBtn.addEventListener("click", (e) => {
@@ -145,13 +138,13 @@ document.addEventListener("DOMContentLoaded", () => {
             const distance = parseFloat(document.getElementById("distance").value) || 0;
             const electricity = parseFloat(document.getElementById("electricity").value) || 0;
             
-        
-            const dailyTotal = (distance * 0.2) + (electricity * 0.47); 
+            const dailyTotal = (distance * 0.18) + (electricity * 0.45); 
             const monthlyTotal = dailyTotal * 30;
+            const variance = dailyTotal > 15 ? "12%" : "0%";
             
-          
-            document.querySelector("div:has(> p:contains('DAILY FOOTPRINT')) h3, .daily-footprint-value, #daily-display").innerText = dailyTotal.toFixed(2);
-            document.querySelector("div:has(> p:contains('MONTHLY VELOCITY')) h3, .monthly-velocity-value, #monthly-display").innerText = monthlyTotal.toFixed(2);
+            if(document.getElementById("daily-val")) document.getElementById("daily-val").innerText = dailyTotal.toFixed(2);
+            if(document.getElementById("monthly-val")) document.getElementById("monthly-val").innerText = monthlyTotal.toFixed(2);
+            if(document.getElementById("target-val")) document.getElementById("target-val").innerText = variance;
         });
     }
 });
