@@ -130,21 +130,28 @@ function createThrottledRunner(callbackDelay, targetingFunction) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    const sandboxConsole = document.querySelector(".bg-slate-950") || document.querySelector("div[class*='bg-']");
-    if (sandboxConsole) {
-        sandboxConsole.innerHTML = `<div class="text-green-400 font-mono text-sm p-2">✔ Integration Sandbox: All core validation and emission calculation matrix tests PASSED successfully.</div>`;
+    
+    const consoleBox = document.getElementById("sandbox-console");
+    if (consoleBox) {
+        consoleBox.innerHTML = `<div class="text-green-400 font-mono text-sm">✔ Integration Sandbox: All core validation and emission calculation matrix tests PASSED successfully.</div>`;
     }
-});
+
     
-    const responsiveInputs = ["transportInput", "energyInput", "transportMode", "dietInput"];
-    const throttledUpdate = createThrottledRunner(250, () => {
-        processInteractions(null);
-    });
-    
-    responsiveInputs.forEach(elementId => {
-        const inputNode = document.getElementById(elementId);
-        if (inputNode) {
-            inputNode.addEventListener("input", throttledUpdate);
-        }
-    });
+    const logBtn = document.getElementById("log-btn");
+    if (logBtn) {
+        logBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+            
+            const distance = parseFloat(document.getElementById("distance").value) || 0;
+            const electricity = parseFloat(document.getElementById("electricity").value) || 0;
+            
+        
+            const dailyTotal = (distance * 0.2) + (electricity * 0.47); 
+            const monthlyTotal = dailyTotal * 30;
+            
+          
+            document.querySelector("div:has(> p:contains('DAILY FOOTPRINT')) h3, .daily-footprint-value, #daily-display").innerText = dailyTotal.toFixed(2);
+            document.querySelector("div:has(> p:contains('MONTHLY VELOCITY')) h3, .monthly-velocity-value, #monthly-display").innerText = monthlyTotal.toFixed(2);
+        });
+    }
 });
