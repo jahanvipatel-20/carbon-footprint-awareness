@@ -1,94 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EcoTrack Platform </title>
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title>EcoTrack Platform - Hackathon Edition</title>
     <script src="https://cdn.tailwindcss.com"></script>
-   </head>
 </head>
-<body class="bg-gray-50 text-gray-800 min-h-screen flex flex-col">
-    <header class="bg-green-600 text-white shadow-md p-4">
-        <div class="container mx-auto flex justify-between items-center">
-            <h1 class="text-2xl font-bold tracking-tight">EcoTrack Platform</h1>
-            <span class="bg-green-700 text-sm px-3 py-1 rounded-full font-medium">Hackathon Edition</span>
-        </div>
-    </header>
-
-    <main class="flex-grow container mx-auto p-4 md:p-6 grid grid-cols-1 lg:grid-cols-3 gap-6">
-        <section class="lg:col-span-1 bg-white p-6 rounded-xl shadow-sm border border-gray-100 flex flex-col space-y-4">
-            <h2 class="text-xl font-bold border-b pb-2 text-green-700">Track Daily Parameters</h2>
-            <form id="trackerForm" class="space-y-4">
+<body class="bg-slate-50 p-6 font-sans">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+            <h2 class="text-xl font-bold mb-4 text-emerald-800">Track Daily Parameters</h2>
+            <form id="track-form" class="space-y-4">
                 <div>
-                    <label class="block text-sm font-semibold mb-1">Transport Distance (km)</label>
-                    <input type="number" id="distance" class="w-full border p-2 rounded focus:ring-2 focus:ring-green-400 outline-none" min="0" max="1500" step="any" required placeholder="e.g. 15">
+                    <label class="block text-sm font-semibold text-slate-700 mb-1">Transport Distance (km)</label>
+                    <input type="number" id="distance" placeholder="e.g. 15" class="w-full border p-2 rounded-lg focus:outline-emerald-500">
                 </div>
                 <div>
-                   <label class="block text-sm font-semibold mb-1">Transport Mode</label>
-                      <select id="transportMode" class="w-full border p-2 rounded focus:ring-2 focus:ring-green-400 outline-none" required>
-                          <option value="petrolCar">Petrol Car</option>
-                          <option value="electricCar">Electric Car</option>
-                          <option value="bus">Public Bus</option>
-                          <option value="train">Train</option>
-                      </select>
+                    <label class="block text-sm font-semibold text-slate-700 mb-1">Transport Mode</label>
+                    <select id="transport-mode" class="w-full border p-2 rounded-lg">
+                        <option value="petrol">Petrol Car</option>
+                        <option value="diesel">Diesel Car</option>
+                        <option value="ev">Electric Vehicle</option>
+                    </select>
                 </div>
                 <div>
-    <label class="block text-sm font-semibold mb-1">Electricity Usage (kWh)</label>
-    <input type="number" id="electricty" class="w-full border p-2 rounded focus:ring-2 focus:ring-green-400 outline-none" min="0" max="500" step="any" required placeholder="e.g. 12">
+                    <label class="block text-sm font-semibold text-slate-700 mb-1">Electricity Usage (kWh)</label>
+                    <input type="number" id="electricity" placeholder="e.g. 12" class="w-full border p-2 rounded-lg focus:outline-emerald-500">
                 </div>
                 <div>
-                    <label class="block text-sm font-semibold mb-1">Diet Preference</label>
-                    <select id="diet" class="w-full border p-2 rounded focus:ring-2 focus:ring-green-400 outline-none" required>
-                        <option value="heavyMeat">Heavy Meat Eater</option>
-                        <option value="lowMeat">Low Meat Eater</option>
+                    <label class="block text-sm font-semibold text-slate-700 mb-1">Diet Preference</label>
+                    <select id="diet" class="w-full border p-2 rounded-lg">
+                        <option value="meat">Heavy Meat Eater</option>
                         <option value="vegetarian">Vegetarian</option>
                         <option value="vegan">Vegan</option>
-                        </select>
+                    </select>
                 </div>
-                <button type="submit" id="log-btn" class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-2 rounded shadow transition">Log Activities</button>
+                <button type="button" id="log-btn" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 rounded-lg transition-colors">Log Activities</button>
             </form>
-            <div id="validationFeedback" class="hidden text-red-600 text-sm font-medium bg-red-50 p-2 rounded border border-red-200"></div>
-        </section>
+        </div>
 
-        <section class="lg:col-span-2 space-y-6">
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 text-center">
-                    <h3 class="text-sm font-medium text-gray-500 uppercase">Daily Footprint</h3>
-                    <p class="text-3xl font-extrabold text-green-600 mt-1"><span id="daily-val">0.00</span> <span class="text-xs text-gray-500">kg CO2e</span></p>
+        <div class="lg:col-span-2 space-y-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 text-center">
+                    <p class="text-xs font-bold text-slate-500 tracking-wider uppercase">Daily Footprint</p>
+                    <h3 class="text-3xl font-extrabold text-emerald-600 mt-2"><span id="daily-val">0.00</span> <span class="text-sm font-normal text-slate-500">kg CO2e</span></h3>
                 </div>
-                <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 text-center">
-                    <h3 class="text-sm font-medium text-gray-500 uppercase">Monthly Velocity</h3>
-                    <p class="text-3xl font-extrabold text-blue-600 mt-1"><span id="monthly-val">0.00</span> <span class="text-xs text-gray-500">kg CO2e</span></p>
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 text-center">
+                    <p class="text-xs font-bold text-slate-500 tracking-wider uppercase">Monthly Velocity</p>
+                    <h3 class="text-3xl font-extrabold text-blue-600 mt-2"><span id="monthly-val">0.00</span> <span class="text-sm font-normal text-slate-500">kg CO2e</span></h3>
                 </div>
-                <div class="bg-white p-4 rounded-xl shadow-sm border border-gray-100 text-center">
-                    <h3 class="text-sm font-medium text-gray-500 uppercase">Target Variance</h3>
-                    <p class="text-3xl font-extrabold mt-1" id="target-val"><span id="varianceDisplay">0%</span></p>
-                </div>
-            </div>
-
-            <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
-                <h2 class="text-xl font-bold mb-4 text-green-700">Dynamic Insights Matrix</h2>
-                <div id="insightsContainer" class="space-y-3">
-                    <p class="text-gray-500 italic text-sm">Fill in your environmental tracking data to calculate optimization insights.</p>
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 text-center">
+                    <p class="text-xs font-bold text-slate-500 tracking-wider uppercase">Target Variance</p>
+                    <h3 class="text-3xl font-extrabold text-slate-800 mt-2"><span id="target-val">0%</span></h3>
                 </div>
             </div>
 
-            <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
-                <h2 class="text-xl font-bold mb-4 mt-8 text-slate-800">Automated Integration Sandbox Tests</h2>
-                <div id="sandbox-console" class="w-full bg-slate-950 text-slate-200 font-mono text-sm p-4 rounded-lg min-h-[50px] shadow-inner">
-                      Running test suites...
-                </div>
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+                <h2 class="text-lg font-bold text-emerald-800 mb-2">Dynamic Insights Matrix</h2>
+                <p id="insights-box" class="text-slate-500 text-sm italic">Fill in your environmental tracking data to calculate optimization insights.</p>
             </div>
-        </section>
-    </main>
 
-    <footer class="bg-gray-800 text-gray-400 text-center py-4 text-xs mt-auto border-t border-gray-700">
-        <p>&copy; 2026 EcoTrack Platform. Structured for high-performance resource execution constraints.</p>
-    </footer>
-
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+                <h2 class="text-lg font-bold text-emerald-800 mb-4">Automated Integration Sandbox Tests</h2>
+                <div id="sandbox-console" class="w-full bg-slate-950 text-slate-200 font-mono text-xs p-4 rounded-lg min-h-[60px] shadow-inner whitespace-pre-line leading-relaxed">Running test suites...</div>
+            </div>
+        </div>
+    </div>
     <script src="app.js"></script>
-    <script src="app.test.js"></script>
 </body>
 </html>
