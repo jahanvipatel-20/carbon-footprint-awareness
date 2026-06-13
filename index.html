@@ -49,7 +49,7 @@
                         <option value="vegan">Vegan</option>
                         </select>
                 </div>
-                <button type="submit" class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-2 rounded shadow transition">Log Activities</button>
+                <button id="runSandboxButton" type="submit" class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-2 rounded shadow transition">Log Activities</button>
             </form>
             <div id="validationFeedback" class="hidden text-red-600 text-sm font-medium bg-red-50 p-2 rounded border border-red-200"></div>
         </section>
@@ -79,7 +79,9 @@
 
             <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
                 <h2 class="text-xl font-bold mb-4 text-green-700">Automated Integration Sandbox Tests</h2>
-                <div id="jest-lite-report" class="bg-gray-900 text-green-400 p-4 rounded-lg font-mono text-xs overflow-x-auto max-h-48 shadow-inner"></div>
+                <div id="jest-lite-report" class="bg-gray-900 text-green-400 p-4 rounded-lg font-mono text-xs overflow-x-auto max-h-48 shadow-inner">
+                    Click "Log Activities" to run sandbox tests and display results here.
+                </div>
             </div>
         </section>
     </main>
