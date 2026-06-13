@@ -131,6 +131,10 @@ function renderSandboxReport() {
     const passedTests = window.passedTests ?? 0;
     const failedTests = window.failedTests ?? 0;
 
+    reportTarget.className = failedTests > 0
+        ? "bg-red-900 text-red-100 border border-red-700 p-4 rounded-lg font-mono text-xs overflow-x-auto max-h-48 shadow-inner"
+        : "bg-green-900 text-green-100 border border-green-700 p-4 rounded-lg font-mono text-xs overflow-x-auto max-h-48 shadow-inner";
+
     let viewOutput = "========================================\n";
     viewOutput += "      AUTOMATED SANDBOX UNIT TESTS     \n";
     viewOutput += "========================================\n";
