@@ -110,6 +110,12 @@ console.log('----------------------------------------');
 console.log(`EXECUTION SUMMARY: Passed: ${passedTests} | Failed: ${failedTests}`);
 console.log('========================================');
 
+if (typeof window !== 'undefined') {
+    window.summaryLog = summaryLog;
+    window.passedTests = passedTests;
+    window.failedTests = failedTests;
+}
+
 if (typeof document !== 'undefined') {
     document.addEventListener("DOMContentLoaded", () => {
         const reportTarget = document.getElementById("jest-lite-report");
