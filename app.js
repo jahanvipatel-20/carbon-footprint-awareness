@@ -118,31 +118,6 @@ function processInteractions(event) {
     const generatedInsightsHTML = compileInsightMatrix(calculatedTotal, distance, currentEnergy);
     document.getElementById("insightsContainer").innerHTML = generatedInsightsHTML;
 
-    renderSandboxReport();
-}
-
-function renderSandboxReport() {
-    const reportTarget = document.getElementById("jest-lite-report");
-    if (!reportTarget) {
-        return;
-    }
-
-    const summaryLog = window.summaryLog || "No sandbox output available.";
-    const passedTests = window.passedTests ?? 0;
-    const failedTests = window.failedTests ?? 0;
-
-    reportTarget.className = failedTests > 0
-        ? "bg-red-900 text-red-100 border border-red-700 p-4 rounded-lg font-mono text-xs overflow-x-auto max-h-48 shadow-inner"
-        : "bg-green-900 text-green-100 border border-green-700 p-4 rounded-lg font-mono text-xs overflow-x-auto max-h-48 shadow-inner";
-
-    let viewOutput = "========================================\n";
-    viewOutput += "      AUTOMATED SANDBOX UNIT TESTS     \n";
-    viewOutput += "========================================\n";
-    viewOutput += summaryLog;
-    viewOutput += "\n----------------------------------------\n";
-    viewOutput += `EXECUTION SUMMARY: Passed: ${passedTests} | Failed: ${failedTests}\n`;
-    viewOutput += "========================================\n";
-    reportTarget.textContent = viewOutput;
 }
 
 function createThrottledRunner(callbackDelay, targetingFunction) {
