@@ -117,6 +117,28 @@ function processInteractions(event) {
 
     const generatedInsightsHTML = compileInsightMatrix(calculatedTotal, distance, currentEnergy);
     document.getElementById("insightsContainer").innerHTML = generatedInsightsHTML;
+
+    renderSandboxReport();
+}
+
+function renderSandboxReport() {
+    const reportTarget = document.getElementById("jest-lite-report");
+    if (!reportTarget) {
+        return;
+    }
+
+    const summaryLog = window.summaryLog || "No sandbox output available.";
+    const passedTests = window.passedTests ?? 0;
+    const failedTests = window.failedTests ?? 0;
+
+    let viewOutput = "========================================\n";
+    viewOutput += "      AUTOMATED SANDBOX UNIT TESTS     \n";
+    viewOutput += "========================================\n";
+    viewOutput += summaryLog;
+    viewOutput += "\n----------------------------------------\n";
+    viewOutput += `EXECUTION SUMMARY: Passed: ${passedTests} | Failed: ${failedTests}\n`;
+    viewOutput += "========================================\n";
+    reportTarget.textContent = viewOutput;
 }
 
 function createThrottledRunner(callbackDelay, targetingFunction) {
