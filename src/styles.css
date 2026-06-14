@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { color-scheme: dark; font-family: Inter, Arial, sans-serif; background-color: #020617; }
+html, body, #root { min-height: 100%; }
+body { margin: 0; background:
+  radial-gradient(circle at top, rgba(16,185,129,0.08), transparent 25%),
+  linear-gradient(135deg, #020617 0%, #111827 45%, #0f172a 100%);
+}
